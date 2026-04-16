@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test Suite: Multiple Export Format (EXP_001)</title>
+  <meta property="og:title" content="Test Suite: Multiple Export Format (EXP_001)">
+  <meta name="twitter:title" content="Test Suite: Multiple Export Format (EXP_001)">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://css.jotbird.com/default.css">
+  <link rel="stylesheet" href="https://assets.jotbird.com/katex.min.css">
+  <style>
+:where(h1, h2, h3, h4, h5, h6) .header-anchor {
+  margin-left: 0.3em;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  color: var(--jb-muted, currentColor);
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+:where(h1, h2, h3, h4, h5, h6):hover .header-anchor,
+.header-anchor:focus-visible {
+  opacity: 1;
+}
+.header-anchor {
+  font-size: 0.9em;
+  user-select: none;
+}
+.header-anchor__icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  stroke-width: 1.4;
+}
+</style>
+</head>
+<body>
+
+  <main class="publish">
+    <h1 id="test-suite:-multiple-export-format-exp_001">Test Suite: Multiple Export Format (EXP_001) <a class="header-anchor" href="#test-suite:-multiple-export-format-exp_001" aria-hidden="true">¶</a></h1>
+<blockquote>
+<p><strong>Project:</strong> Ceevee</p>
+<p><strong>Version:</strong> 1.0</p>
+<p><strong>Priority:</strong> High</p>
+</blockquote>
+<hr>
+<h3 id="1.-objectivescope">1. Objective/Scope <a class="header-anchor" href="#1.-objectivescope" aria-hidden="true">¶</a></h3>
+<p>This document contains a comprehensive test suite for Ceevee's multi-export functionality. Under this feature, users can customize their generated resumes using the provided options in the customization settings and export them to multiple formats, including PDF, DOCX, and Markdown.</p>
+<hr>
+<h3 id="2.-testing-scenario">2. Testing Scenario <a class="header-anchor" href="#2.-testing-scenario" aria-hidden="true">¶</a></h3>
+<ol>
+<li>Verify multi-format export functionality</li>
+<li>Validate the effect of UI customization on Live Preview and exported files</li>
+<li>Verify tiered access of Pro+ vs. Free on watermark and export formats</li>
+<li>Validate consistency between the exported resume and cover letter</li>
+</ol>
+<hr>
+<h3 id="3.-test-cases">3. Test Cases <a class="header-anchor" href="#3.-test-cases" aria-hidden="true">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Expected Result</th>
+<th style="text-align:center">Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TC_EXP_001</td>
+<td style="text-align:left">Export PDF on free tier</td>
+<td style="text-align:left">Contains watermark, downloads successfully</td>
+<td style="text-align:center">High</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_002</td>
+<td style="text-align:left">Export docx on Pro+ tier</td>
+<td style="text-align:left">Editable docx file downloads successfully and does not lose formatting</td>
+<td style="text-align:center">High</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_003</td>
+<td style="text-align:left">Export markdown file</td>
+<td style="text-align:left">Downloaded file preserves header/title formats and bullet points</td>
+<td style="text-align:center">High</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_004</td>
+<td style="text-align:left">Change font from “Inter” to “Merriweather”</td>
+<td style="text-align:left">Live preview instantly reflects the setting; Exported file matches the preview</td>
+<td style="text-align:center">Med</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_005</td>
+<td style="text-align:left">Change Font Size from “Medium” to “Large”</td>
+<td style="text-align:left">Live preview instantly reflects the setting; Exported file matches the preview</td>
+<td style="text-align:center">Med</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_006</td>
+<td style="text-align:left">Change template from “Classic” to “Minimal”</td>
+<td style="text-align:left">Live preview instantly reflects the setting; Exported file matches the preview; Green accents are absent; Line spacing must be dense</td>
+<td style="text-align:center">Med</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_007</td>
+<td style="text-align:left">Change template from “Minimal” to “Modern”</td>
+<td style="text-align:left">Live preview instantly reflects the setting; Exported file matches the preview; Blue accents are observed; structure must reflect contemporary design; line spacing must be less dense</td>
+<td style="text-align:center">Med</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_008</td>
+<td style="text-align:left">Attempt to export DOCX format on free tier</td>
+<td style="text-align:left">Action prohibited; Prompt must appear that this feature is available on Pro+ tier only</td>
+<td style="text-align:center">High</td>
+</tr>
+<tr>
+<td style="text-align:left">TC_EXP_009</td>
+<td style="text-align:left">Export Cover Letter</td>
+<td style="text-align:left">Downloads a PDF containing the cover letter; content must be aligned with the resume and the customization set by the user</td>
+<td style="text-align:center">High</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="4.-execution-checklist">4. Execution Checklist <a class="header-anchor" href="#4.-execution-checklist" aria-hidden="true">¶</a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><label><input type="checkbox" class="task-list-item-checkbox"> Download the resume in multiple formats (DOCX, PDF, Markdown)</label></li>
+<li class="task-list-item enabled"><label><input type="checkbox" class="task-list-item-checkbox"> Verify presence of watermark on PDF on free tier</label></li>
+<li class="task-list-item enabled"><label><input type="checkbox" class="task-list-item-checkbox"> Check whether Live Preview exhibits a delay when changing customization settings</label></li>
+<li class="task-list-item enabled"><label><input type="checkbox" class="task-list-item-checkbox"> Ensure that exported files reflect the customization</label></li>
+<li class="task-list-item enabled"><label><input type="checkbox" class="task-list-item-checkbox"> Verify whether the content of the separate cover letter matches the resume</label></li>
+</ul>
+
+  </main>
+
+  <div class="jb-watermark">
+    <img src="https://assets.jotbird.com/logo-black-white(2).svg" alt="JotBird Logo">
+    <div class="jb-watermark-text">
+      Published with <a href="https://www.jotbird.com" target="_blank" rel="noopener noreferrer">JotBird</a>
+    </div>
+  </div>
+
+</body>
+</html>
